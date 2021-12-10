@@ -9,9 +9,10 @@
     vlc                        emacs
     wget                       curl
     nmap                       openboard
-    alacritty
+    alacritty                  pavucontrol
 
     xfce.xfce4-whiskermenu-plugin
+    xfce.xfce4-pulseaudio-plugin
     matcha-gtk-theme
     papirus-icon-theme
 
