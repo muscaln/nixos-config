@@ -11,6 +11,7 @@
     nodejs
     bootiso
     gdb
+    bootiso
   ]; 
 
   programs.neovim = {
