@@ -12,6 +12,8 @@
     bootiso
     gdb
     bootiso
+    python3
+    ghc
   ]; 
 
   programs.neovim = {
