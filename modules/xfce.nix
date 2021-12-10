@@ -6,12 +6,12 @@
   services.xserver.displayManager.lightdm.enable = true;
   
   environment.systemPackages = with pkgs; [
-    light-locker
+    lightlocker
     libsForQt5.qtstyleplugins
   ];
 
-  environment.variables = [
-    "QT_STYLE_OVERRIDE" = "gtk2";
-    "QT_QPA_PLATFORMTHEME" = "gtk2";
-  ];
+  environment.variables = {
+    QT_STYLE_OVERRIDE = "gtk2";
+    QT_QPA_PLATFORMTHEME = "gtk2";
+  };
 }

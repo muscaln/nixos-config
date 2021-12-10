@@ -1,4 +1,4 @@
-{ pkgs, ... };
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -8,7 +8,7 @@
     evince                     system-config-printer
     vlc                        emacs
     wget                       curl
-    nmap                       ngrok2
+    nmap                      
   
     (kodi.passthru.withPackages (kodiPkgs: [kodiPkgs.pvr-iptvsimple]))
   ];

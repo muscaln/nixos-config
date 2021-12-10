@@ -1,13 +1,13 @@
-{ pkgs, config, lib, ... };
+{ pkgs, config, lib, ... }:
 
 {
   # bluetooth
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.package = pkgs.bluezFull
+  hardware.bluetooth.package = pkgs.bluezFull;
   services.blueman.enable = true;
   
   hardware.opengl.enable = true;
-  hardware.opengl.extraPackages = [
+  hardware.opengl.extraPackages = with pkgs; [
     intel-media-driver
     vaapiIntel
     vaapiVdpau

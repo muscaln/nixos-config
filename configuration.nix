@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... };
+{ pkgs, lib, config, ... }:
 
 {
   boot.loader.efi.canTouchEfiVariables = true;
@@ -24,11 +24,24 @@
 
   networking.networkmanager.enable = true;
 
+  fonts.fonts = with pkgs; [
+    open-sans
+    source-code-pro
+    noto-fonts
+  ];
+
   users.users.musfay = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
     initialPassword = "123456";  
   };
+
+  nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+   };
 
   services.udev.packages = [ pkgs.android-udev-rules ];
 

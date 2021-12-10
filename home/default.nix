@@ -1,4 +1,4 @@
-{ pkgs, ... };
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -17,7 +17,7 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
-    plugins = with pkgs.vimPlugins [
+    plugins = with pkgs.vimPlugins; [
       rainbow
       vim-nix
       nerdtree
