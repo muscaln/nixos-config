@@ -9,7 +9,9 @@
   };
   
   boot.kernelPackages = pkgs.linuxPackages_xanmod;
-
+  
+  hardware.cpu.intel.updateMicrocode = true;
+  
   boot.kernelParams = [
     "nomce"
     "nowatchdog"
