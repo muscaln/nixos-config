@@ -32,6 +32,15 @@
     noto-fonts
   ];
 
+  services.xserver.layout = "trq";
+  i18n.defaultLocale = "tr_TR.UTF-8";
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "trq";
+  };
+
+
+
   users.users.musfay = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
