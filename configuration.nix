@@ -32,7 +32,7 @@
     noto-fonts
   ];
 
-  services.xserver.layout = "trq";
+  services.xserver.layout = "tr";
   i18n.defaultLocale = "tr_TR.UTF-8";
   console = {
     font = "Lat2-Terminus16";
