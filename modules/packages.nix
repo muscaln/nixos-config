@@ -8,7 +8,10 @@
     evince                     system-config-printer
     vlc                        emacs
     wget                       curl
-    nmap                      
+    nmap                       openboard
+    alacritty
+
+    xfce.xfce4-whiskermenu-plugin
   
     (kodi.passthru.withPackages (kodiPkgs: [kodiPkgs.pvr-iptvsimple]))
   ];
