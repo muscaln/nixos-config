@@ -34,6 +34,7 @@
 
   services.xserver.layout = "tr";
   i18n.defaultLocale = "tr_TR.UTF-8";
+  time.timeZone = "Europe/Istanbul";
   console = {
     font = "Lat2-Terminus16";
     keyMap = "trq";
