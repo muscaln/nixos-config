@@ -32,6 +32,15 @@
     noto-fonts
   ];
 
+  # Enable TearFree
+  services.xserver.extraConfig = ''
+    Section "Device"
+      Identifier "Intel Graphics"
+      Driver "intel"
+      Option "TearFree" "true"
+    EndSection
+  '';
+
   services.xserver.layout = "tr";
   i18n.defaultLocale = "tr_TR.UTF-8";
   time.timeZone = "Europe/Istanbul";
