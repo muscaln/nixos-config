@@ -28,4 +28,10 @@
       vim-surround
     ];
   };
+
+  programs.alacritty.enable = true;
+  programs.alacritty.settings = {
+    window.opacity = 0.7;
+    font.size = 10.0;
+  };
 }
