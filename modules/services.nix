@@ -29,7 +29,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    
+  /*   
     config.pipewire = {
       "context.properties" = {
         "link.max-buffers" = 16;
@@ -108,6 +108,6 @@
         "node.latency" = "32/48000";
         "resample.quality" = 1;
       };
-    };
+    }; */
   };
 }
