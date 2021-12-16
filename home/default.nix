@@ -2,17 +2,12 @@
 
 {
   home.packages = with pkgs; [
-    go
-    rustc
-    cargo
-    llvmPackages_latest.clang
+    any-nix-shell
     android-tools
     qdl
-    nodejs
     bootiso
     gdb
     screen
-    bootiso
     python3
     ghc
   ]; 
@@ -38,6 +33,9 @@
   };
 
   programs.zsh.enable = true;
+  programs.zsh.initExtra = ''
+    any-nix-shell zsh --info-right | source /dev/stdin
+  '';
   programs.zsh.oh-my-zsh.enable = true;
   programs.zsh.oh-my-zsh.theme = "robbyrussell";
   programs.zsh.oh-my-zsh.plugins = [ "git" ];
