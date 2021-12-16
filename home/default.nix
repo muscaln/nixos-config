@@ -11,6 +11,7 @@
     nodejs
     bootiso
     gdb
+    screen
     bootiso
     python3
     ghc
