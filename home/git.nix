@@ -4,7 +4,7 @@
   programs.git = {
     enable = true;
     userName = "Mustafa Çalışkan";
-    userEmail = "musfay@protonmail.com";
+    userEmail = "muscaln@protonmail.com";
   };
 
   programs.gh.enable = true;
