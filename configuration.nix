@@ -50,10 +50,9 @@
   };
 
 
-
   users.users.musfay = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" ];
     initialPassword = "123456";  
   };
 
