@@ -2,14 +2,17 @@
 
 {
   home.packages = with pkgs; [
-    any-nix-shell
     android-tools
     qdl
-    bootiso
+    (bootiso.overrideAttrs (oldAttrs: rec {
+      patches = [ ./bootiso-syslinux.patch ];
+    }))
     gdb
     screen
     python3
     ghc
+    nodejs
+    go
   ]; 
 
   programs = {
