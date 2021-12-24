@@ -7,7 +7,7 @@
   outputs = inputs@{ self, home-manager, nixpkgs,  ... }:
     let
       system = "x86_64-linux";
-      username = "musfay";
+      username = "milhan";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -23,7 +23,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.musfay = {
+            home-manager.users.milhan = {
               programs.home-manager.enable = true;
             } // { imports = [ ./home ] ++ homeModules; };
           }
@@ -32,16 +32,14 @@
     in
 
     {
-      nixosConfigurations.g5070 = mkComputer
+      nixosConfigurations.aichpee = mkComputer
         ./configuration.nix
         [
-          ./modules/xfce.nix
+          ./modules/desktop.nix
           ./modules/services.nix
           ./modules/hardware-configuration.nix
           ./modules/packages.nix
         ]
-        [
-          ./home/git.nix
-        ];
+        [ ];
     };
 }

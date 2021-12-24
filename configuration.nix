@@ -9,19 +9,16 @@
   };
   
   boot.kernelPackages = pkgs.linuxPackages_xanmod;
+  boot.extraModulePackages = [ config.boot.kernelPackages.rtl8821ce ];
+  boot.blacklistedKernelModules = [ "rtw88_8821ce" ];
   
   hardware.cpu.intel.updateMicrocode = true;
   
   boot.kernelParams = [
-    "nomce"
-    "nowatchdog"
     "quiet"
     "loglevel=2"
-    "amdgpu.si_support=1"
-    "radeon.si_support=0"
-    "modules_blacklist=iTCO_wdt"
     "i915.fastboot=1"
-    "mitigations=off"
+    "i915.force_probe=4e55"
   ];
 
   networking.networkmanager.enable = true;
@@ -32,15 +29,6 @@
     noto-fonts
   ];
 
-  # Enable TearFree
-  services.xserver.extraConfig = ''
-    Section "Device"
-      Identifier "Intel Graphics"
-      Driver "intel"
-      Option "TearFree" "true"
-    EndSection
-  '';
-
   services.xserver.layout = "tr";
   i18n.defaultLocale = "tr_TR.UTF-8";
   time.timeZone = "Europe/Istanbul";
@@ -50,7 +38,7 @@
   };
 
 
-  users.users.musfay = {
+  users.users.milhan = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "dialout" ];
     initialPassword = "123456";  

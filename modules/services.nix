@@ -14,13 +14,8 @@
     libvdpau-va-gl
   ];
   
-  # printing
-  services.printing.enable = true;
-  services.printing.drivers = [ pkgs.gutenprint ];
-
   # touchpad and wacom
   services.xserver.libinput.enable = true;
-  services.xserver.wacom.enable = true;
 
   # pipewire
   security.rtkit.enable = true;
