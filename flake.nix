@@ -3,19 +3,52 @@
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.flake-utils.url = "github:numtide/flake-utils";
   
-  outputs = inputs@{ self, home-manager, flake-utils, nixpkgs, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs = inputs@{ self, home-manager, nixpkgs, ... }:
       let
+        system = "x86_64-linux";
         username = "musfay";
+        device = "g5070";
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
         };
-      
+        
+        updateHardwareConfig = pkgs.writeScriptBin "updateHardwareConfig" ''
+          if [ [$(${pkgs.git}/bin/git diff --stat) != "" ]]; then
+            echo "Tree is dirty. Aborting."
+          else
+            export root=/
+            [ -d "/mnt/boot" ] && export root=/mnt
+            nixos-generate-config --dir ./modules/ --root $root
+            rm modules/configuration.nix
+            git add modules/hardware-configuration.nix
+            git commit -m "updateHardwareConfig: changes"
+          fi
+        '';
+
+        rebuildSystem = pkgs.writeScriptBin "rebuildSystem" ''
+          echo 'Rebuilding config "${device}" ...'
+          sudo nixos-rebuild switch --flake .#${device}
+        '';
+
+        bumpFlake = pkgs.writeScriptBin "bumpFlake" ''
+          if [ "$(${pkgs.git}/bin/git diff --stat)" != "" ]; then
+            echo "Tree is dirty. Aborting."
+          else
+            ${pkgs.nixUnstable}/bin/nix flake update
+            git add flake.lock
+            git commit -m "bumpFlake: update flake.lock"
+          fi
+        '';
+        
         devshell = pkgs.mkShell {
-          buildInputs = [ scripts ];
+          buildInputs = with pkgs; [
+            git
+            updateHardwareConfig
+            rebuildSystem
+            bumpFlake
+          ];
         };
 
         mkComputer = configurationNix: extraModules: homeModules: nixpkgs.lib.nixosSystem {
@@ -37,7 +70,7 @@
       in
 
       {
-        nixosConfigurations.g5070 = mkComputer
+        nixosConfigurations."${device}" = mkComputer
           ./configuration.nix
           [
             ./modules/xfce.nix
@@ -49,6 +82,6 @@
           ./home/git.nix
           ];
         
-        devShell = devshell;
-      })
+        devShell.${system} = devshell;
+      };
 }
