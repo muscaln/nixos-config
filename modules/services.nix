@@ -18,6 +18,7 @@
   services.xserver.libinput.enable = true;
 
   # pipewire
+  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
