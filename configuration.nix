@@ -2,11 +2,7 @@
 
 {
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub = {
-    enable = true;
-    efiSupport = true;
-    device = "nodev";
-  };
+  boot.loader.systemd-boot.enable = true;
   
   boot.kernelPackages = pkgs.linuxPackages_xanmod;
   boot.extraModulePackages = [ config.boot.kernelPackages.rtl8821ce ];
