@@ -20,7 +20,8 @@
           else
             export root=/
             [ -d "/mnt/boot" ] && export root=/mnt
-            nixos-generate-config --dir ./modules/ --root $root
+            ${pkgs.nixos-install-tools}/bin/nixos-generate-config \
+              --dir ./modules/ --root $root
             rm modules/configuration.nix
             git add modules/hardware-configuration.nix
             git commit -m "updateHardwareConfig: changes"
@@ -29,7 +30,7 @@
 
         rebuildSystem = pkgs.writeScriptBin "rebuildSystem" ''
           echo 'Rebuilding config "${device}" ...'
-          sudo nixos-rebuild switch --flake .#${device}
+          sudo ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake .#${device}
         '';
 
         bumpFlake = pkgs.writeScriptBin "bumpFlake" ''
