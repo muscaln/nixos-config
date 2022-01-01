@@ -9,7 +9,7 @@
   };
   
   boot.kernelPackages = pkgs.linuxPackages_xanmod;
-  
+ 
   hardware.cpu.intel.updateMicrocode = true;
   
   boot.kernelParams = [
@@ -31,15 +31,6 @@
     source-code-pro
     noto-fonts
   ];
-
-  # Enable TearFree
-  services.xserver.extraConfig = ''
-    Section "Device"
-      Identifier "Intel Graphics"
-      Driver "intel"
-      Option "TearFree" "true"
-    EndSection
-  '';
 
   services.xserver.layout = "tr";
   i18n.defaultLocale = "tr_TR.UTF-8";
