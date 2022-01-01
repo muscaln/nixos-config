@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  nixpkgs.config.chromium.commandLineArgs = "--enable-features=VaapiVideoDecoder --use-gl=egl --ignore-gpu-blocklist";
   environment.systemPackages = with pkgs; [
     chromium                   element-desktop
     firefox                    discord

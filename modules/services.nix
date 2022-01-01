@@ -7,11 +7,8 @@
   services.blueman.enable = true;
   
   services.xserver.videoDrivers = [ "intel" "amdgpu" ];
-  services.xserver.deviceSection = ''
-    Option "DRI" "3"
-    Option "TearFree" "true"
-  '';
-  
+  services.xserver.extraConfig = builtins.readFile ./xorg.conf;
+ 
   hardware.opengl.enable = true;
   hardware.opengl.extraPackages = with pkgs; [
     intel-media-driver
