@@ -4,6 +4,10 @@
   home.packages = with pkgs; [
     android-tools
     qdl
+    libva-utils
+    usbutils
+    pciutils
+    glxinfo
     (bootiso.overrideAttrs (oldAttrs: rec {
       patches = [ ./bootiso-syslinux.patch ];
     }))
