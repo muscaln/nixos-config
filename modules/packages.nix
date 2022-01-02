@@ -1,7 +1,8 @@
 { pkgs, ... }:
 
 {
-  nixpkgs.config.chromium.commandLineArgs = "--enable-features=VaapiVideoDecoder --use-gl=egl --ignore-gpu-blocklist";
+  programs.steam.enable = true;
+
   environment.systemPackages = with pkgs; [
     chromium                   element-desktop
     firefox                    discord
@@ -10,7 +11,7 @@
     vlc                        emacs
     wget                       curl
     nmap                       openboard
-    alacritty                  pavucontrol
+    konsole                    pavucontrol
     arduino
 
     xfce.xfce4-whiskermenu-plugin
