@@ -12,7 +12,7 @@
     wget                       curl
     nmap                       openboard
     konsole                    pavucontrol
-    arduino
+    arduino                    polymc
 
     xfce.xfce4-whiskermenu-plugin
     xfce.xfce4-pulseaudio-plugin
