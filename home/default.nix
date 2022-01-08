@@ -45,6 +45,7 @@
         nerdtree
         lightline-vim
         vim-surround
+        editorconfig-nvim
       ];
     };
 
