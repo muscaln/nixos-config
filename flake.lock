@@ -22,11 +22,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1641459437,
-        "narHash": "sha256-z0IOcc6LLbVhyri/aTyWzRqJs3p1pBK9idOiMwCWiqs=",
+        "lastModified": 1641700429,
+        "narHash": "sha256-+Pd33S+4+VX6RYGJQ5Q4n46+iRLr9y9ilq9oC/bcnoc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c751aeb19e84a0a777f36fd5ea73482a066bb406",
+        "rev": "a90ddcd62748e445bbbe01834595eda29dc28db9",
         "type": "github"
       },
       "original": {
@@ -77,18 +77,17 @@
         "quazip": "quazip"
       },
       "locked": {
-        "lastModified": 1641670386,
-        "narHash": "sha256-YLENHu5877gifGI21jenyOjOGHhB4FtSyBRVcs8ZJnE=",
-        "owner": "muscaln",
-        "repo": "polymc",
-        "rev": "9611b92b07a6dfea6e3e249539336d330145739c",
-        "type": "github"
+        "lastModified": 1641721008,
+        "narHash": "sha256-o6dNARoZoDvEB33+KyBdlvQ0qx/YAZeycF7NYNF2og8=",
+        "ref": "develop",
+        "rev": "40e75054adfabb4e405645a3e526a52e650615cf",
+        "revCount": 2966,
+        "type": "git",
+        "url": "file:///home/musfay/workspace/PolyMC"
       },
       "original": {
-        "owner": "muscaln",
-        "ref": "flake",
-        "repo": "polymc",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/musfay/workspace/PolyMC"
       }
     },
     "quazip": {
