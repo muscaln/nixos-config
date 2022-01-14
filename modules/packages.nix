@@ -13,7 +13,8 @@
     nmap                       openboard
     konsole                    pavucontrol
     arduino                    polymc
-
+    easyeffects
+    
     xfce.xfce4-whiskermenu-plugin
     xfce.xfce4-pulseaudio-plugin
     matcha-gtk-theme

@@ -13,6 +13,7 @@
     }))
     gdb
     screen
+    neofetch
     python3
     ghc
     nodejs
