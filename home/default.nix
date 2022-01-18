@@ -11,6 +11,8 @@
     (bootiso.overrideAttrs (oldAttrs: rec {
       patches = [ ./bootiso-syslinux.patch ];
     }))
+    nix-prefetch-git
+    nixpkgs-review
     gdb
     screen
     neofetch
@@ -18,6 +20,7 @@
     ghc
     nodejs
     go
+    fishPlugins.pure
   ]; 
 
   programs = {
@@ -59,11 +62,8 @@
       };
     };
 
-    zsh = {
+    fish = {
       enable = true;
-      oh-my-zsh.enable = true;
-      oh-my-zsh.theme = "robbyrussell";
-      oh-my-zsh.plugins = [ "git" ];
     };
   };
 }
