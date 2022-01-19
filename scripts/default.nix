@@ -38,4 +38,7 @@ in pkgs.mkShell {
     bumpFlake
     pkgs.git
   ];
+  shellHook = ''
+    ${pkgs.fish}/bin/fish
+  '';
 }

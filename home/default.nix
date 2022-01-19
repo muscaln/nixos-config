@@ -8,6 +8,7 @@
     usbutils
     pciutils
     glxinfo
+    any-nix-shell
     (bootiso.overrideAttrs (oldAttrs: rec {
       patches = [ ./bootiso-syslinux.patch ];
     }))
@@ -64,6 +65,20 @@
 
     fish = {
       enable = true;
+      plugins = [
+        {
+          name = "plugin-git";
+          src = pkgs.fetchFromGitHub {
+            owner = "jhillyerd";
+            repo = "plugin-git";
+            rev = "44a1eb5856cea43e4c01318120c1d4e1823d1e34";
+            sha256 = "sha256-A+cw0Rco/3jaFPzijKmHZVNAmFR+p3y/7ig13WYP84Y=";
+          }; 
+        }
+      ];
+      shellInit = ''
+        any-nix-shell fish --info-right | source
+      '';
     };
   };
 }
