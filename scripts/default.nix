@@ -20,25 +20,11 @@ let
     sudo ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake .#${device}
   '';
 
-  bumpFlake = pkgs.writeScriptBin "bumpFlake" ''
-    if [ "$(${pkgs.git}/bin/git diff --stat)" != "" ]; then
-      echo "Tree is dirty. Aborting."
-    else
-      ${pkgs.nixUnstable}/bin/nix flake update
-      git add flake.lock
-      git commit -m "bumpFlake: update flake.lock"
-    fi
-  '';
-
 in pkgs.mkShell {
   name = "config-env";
   buildInputs = [
     updateHardwareConfig
     rebuildSystem
-    bumpFlake
     pkgs.git
   ];
-  shellHook = ''
-    ${pkgs.fish}/bin/fish
-  '';
 }
