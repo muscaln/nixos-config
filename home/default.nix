@@ -57,7 +57,7 @@
     alacritty = {
       enable = true;
       settings = {
-        shell = "${pkgs.zsh}/bin/zsh";
+        shell = "${pkgs.fish}/bin/fish";
         window.opacity = 0.7;
         font.size = 10.0;
       };
