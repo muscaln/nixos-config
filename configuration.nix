@@ -9,7 +9,11 @@
   };
   
   boot.kernelPackages = pkgs.linuxPackages_xanmod;
- 
+
+  boot.extraModprobeConfig = ''
+    options rtl8723be fwlps=0 ant_sel=2
+  '';
+  
   hardware.cpu.intel.updateMicrocode = true;
   
   boot.kernelParams = [
