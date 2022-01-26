@@ -22,6 +22,7 @@
     nodejs
     go
     fishPlugins.pure
+    gh
   ]; 
 
   programs = {
@@ -58,8 +59,10 @@
       enable = true;
       settings = {
         shell = "${pkgs.fish}/bin/fish";
-        background_opacity = 0.8;
-        font.size = 10.0;
+        window.opacity = 0.8;
+        font.size = 10.5;
+        font.normal.family = "Source Code Pro";
+        font.normal.style = "Regular";
       };
     };
 
