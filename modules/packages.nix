@@ -5,16 +5,14 @@
   programs.fish.enable = true;
 
   environment.systemPackages = with pkgs; [
-    chromium                   element-desktop
+    chromium                   arduino
     firefox                    discord
     tdesktop                   libreoffice-fresh
     evince                     system-config-printer
     vlc                        emacs
     wget                       curl
     nmap                       openboard
-    konsole                    pavucontrol
-    arduino                    polymc
-    easyeffects
+    pavucontrol
     
     xfce.xfce4-whiskermenu-plugin
     xfce.xfce4-pulseaudio-plugin

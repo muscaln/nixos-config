@@ -25,12 +25,6 @@
   services.xserver.libinput.enable = true;
   services.xserver.wacom.enable = true;
 
-  # gvfs
-  services.gvfs = {
-    enable = true;
-    package = lib.mkForce pkgs.gnome3.gvfs;
-  };
-
   # pipewire
   security.rtkit.enable = true;
   services.pipewire = {
