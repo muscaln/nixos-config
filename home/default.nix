@@ -58,7 +58,7 @@
       enable = true;
       settings = {
         shell = "${pkgs.fish}/bin/fish";
-        window.opacity = 0.7;
+        background_opacity = 0.8;
         font.size = 10.0;
       };
     };
