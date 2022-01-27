@@ -3,6 +3,8 @@
 {
   programs.steam.enable = true;
   programs.fish.enable = true;
+  programs.gamemode.enable = true;
+  programs.gnupg.agent.enable = true;
 
   environment.systemPackages = with pkgs; [
     chromium                   arduino
