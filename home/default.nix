@@ -22,7 +22,6 @@
     nodejs
     go
     fishPlugins.pure
-    gh
   ]; 
 
   programs = {
