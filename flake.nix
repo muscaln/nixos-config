@@ -14,6 +14,9 @@
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          config.packageOverrides = pkgs: {
+            vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+          };
           overlays = [ polymc.overlay ];
         };
         
