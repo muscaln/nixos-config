@@ -6,8 +6,8 @@
   hardware.bluetooth.package = pkgs.bluezFull;
   services.blueman.enable = true;
   
-  services.xserver.videoDrivers = [ "intel" "amdgpu" ];
-  services.xserver.extraConfig = builtins.readFile ./xorg.conf;
+  #services.xserver.videoDrivers = [ "intel" "amdgpu" ];
+  #services.xserver.extraConfig = builtins.readFile ./xorg.conf;
  
   hardware.opengl.enable = true;
   hardware.opengl.extraPackages = with pkgs; [
