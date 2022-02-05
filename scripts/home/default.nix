@@ -21,8 +21,6 @@
     ghc
     nodejs
     go
-    rustc
-    cargo
     fishPlugins.pure
   ]; 
 

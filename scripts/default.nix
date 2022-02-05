@@ -1,7 +1,9 @@
-{ pkgs, device }:
+{ pkgs, device, self }:
 
 let
   updateHardwareConfig = pkgs.writeScriptBin "updateHardwareConfig" ''
+    #!${pkgs.runtimeShell}
+
     if [ [$(${pkgs.git}/bin/git diff --stat) != "" ]]; then
       echo "Tree is dirty. Aborting."
     else
@@ -10,21 +12,22 @@ let
       ${pkgs.nixos-install-tools}/bin/nixos-generate-config \
         --dir ./modules/ --root $root
       rm modules/configuration.nix
-      git add modules/hardware-configuration.nix
-      git commit -m "updateHardwareConfig: changes"
+      ${pkgs.git}/bin/git add modules/hardware-configuration.nix
+      ${pkgs.git}/bin/git commit -m "updateHardwareConfig: changes"
     fi
   '';
 
   rebuildSystem = pkgs.writeScriptBin "rebuildSystem" ''
+    #!${pkgs.runtimeShell}
+    pushd $HOME/.nixos-config
     echo 'Rebuilding config "${device}" ...'
     sudo ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake .#${device}
   '';
 
-in pkgs.mkShell {
-  name = "config-env";
-  buildInputs = [
+in pkgs.symlinkJoin {
+  name = "scripts";
+  paths = [
     updateHardwareConfig
     rebuildSystem
-    pkgs.git
   ];
 }
