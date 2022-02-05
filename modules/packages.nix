@@ -14,7 +14,7 @@
     evince                     system-config-printer
     vlc                        emacs
     wget                       curl
-    nmap                       openboard
+    nmap
     pavucontrol
     
     xfce.xfce4-whiskermenu-plugin
