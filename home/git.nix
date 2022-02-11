@@ -9,11 +9,5 @@
     signing.signByDefault = true;
   };
 
-  programs.gh = {
-    enable = true;
-    enableGitCredentialHelper = true;
-    settings.editor = "vim";
-  };
-
   programs.gpg.enable = true;
 }

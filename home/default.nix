@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     android-tools
+    gh
     qdl
     libva-utils
     usbutils
@@ -34,12 +35,7 @@
         bbenoist.nix
         arrterian.nix-env-selector
         ms-python.python
-      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
-        name = "vscode-language-pack-tr";
-        publisher = "MS-CEINTL";
-        version = pkgs.vscodium.version;
-        sha256 = "sha256-gh6CJ+56fijEVryLWp2b8OjkF6T6whT334VXXK3+G6M=";
-      }]);
+      ]);
     };
 
     neovim = {
