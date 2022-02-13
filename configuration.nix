@@ -8,7 +8,7 @@
     device = "nodev";
   };
   
-  boot.kernelPackages = pkgs.linuxPackages_xanmod;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.extraModprobeConfig = ''
     options rtl8723be fwlps=0 ant_sel=2
@@ -47,7 +47,6 @@
     keyMap = "trq";
   };
 
-
   users.users.musfay = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "dialout" ];
@@ -55,7 +54,6 @@
   };
 
   nix = {
-    package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
