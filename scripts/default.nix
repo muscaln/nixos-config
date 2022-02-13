@@ -10,8 +10,9 @@ let
       export root=/
       [ -d "/mnt/boot" ] && export root=/mnt
       ${pkgs.nixos-install-tools}/bin/nixos-generate-config \
-        --dir ./modules/ --root $root
-      rm modules/configuration.nix
+        --root $root
+      ${pkgs.coreutils}/bin/mv $root/etc/nixos/hardware-configuration.nix \
+        modules/hardware-configuration.nix
       ${pkgs.git}/bin/git add modules/hardware-configuration.nix
       ${pkgs.git}/bin/git commit -m "updateHardwareConfig: changes"
     fi
