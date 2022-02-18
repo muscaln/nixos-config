@@ -10,7 +10,6 @@
       let
         system = "x86_64-linux";
         username = "musfay";
-        device = "g5070";
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
@@ -20,29 +19,29 @@
           overlays = [ polymc.overlay ];
         };
         
-        scripts = pkgs.callPackage ./scripts { inherit device self; };
+        mkSystemConfig = device: configurationNix: extraModules: homeModules: let
+          scripts = pkgs.callPackage ./scripts { inherit device self; };
+          in nixpkgs.lib.nixosSystem {
+            inherit system;
+            specialArgs = { inherit system inputs pkgs; };
+            modules = [
+              configurationNix
 
-        mkComputer = configurationNix: extraModules: homeModules: nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit system inputs pkgs; };
-          modules = [
-            configurationNix
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.musfay = {
-                programs.home-manager.enable = true;
-              } // { home.packages = [ scripts ]; }
-                // { imports = [ ./home ] ++ homeModules; };
-            }
-          ] ++ extraModules;
-        };
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.${username} = {
+                  programs.home-manager.enable = true;
+                } // { home.packages = [ scripts ]; }
+                  // { imports = [ ./home ] ++ homeModules; };
+              }
+            ] ++ extraModules;
+          };
       in
 
       {
-        nixosConfigurations."${device}" = mkComputer
+        nixosConfigurations."g5070" = mkSystemConfig "g5070"
           ./configuration.nix
           [
             ./modules/xfce.nix
