@@ -16,6 +16,8 @@
   
   hardware.cpu.intel.updateMicrocode = true;
   
+  fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
+
   boot.kernelParams = [
     "nomce"
     "nowatchdog"
