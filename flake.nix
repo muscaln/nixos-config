@@ -3,10 +3,8 @@
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.polymc.url = "github:polymc/polymc";
-  inputs.polymc.inputs.nixpkgs.follows = "nixpkgs";
 
-  outputs = inputs@{ self, home-manager, nixpkgs, polymc, ... }:
+  outputs = inputs@{ self, home-manager, nixpkgs, ... }:
       let
         system = "x86_64-linux";
         username = "musfay";
@@ -16,7 +14,6 @@
           config.packageOverrides = pkgs: {
             vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
           };
-          overlays = [ polymc.overlay ];
         };
         
         mkSystemConfig = device: configurationNix: extraModules: homeModules: let
