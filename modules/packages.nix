@@ -11,11 +11,11 @@
     chromium                   arduino
     firefox                    discord
     tdesktop                   libreoffice-fresh
-    evince                     system-config-printer
+    qpdfview                   system-config-printer
     vlc                        emacs
     wget                       curl
-    nmap
-    pavucontrol
+    nmap                       evince
+    pavucontrol                gparted
     
     xfce.xfce4-whiskermenu-plugin
     xfce.xfce4-pulseaudio-plugin
