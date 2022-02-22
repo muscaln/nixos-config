@@ -16,10 +16,13 @@
     wget                       curl
     nmap                       evince
     pavucontrol                gparted
+    polymc
     
     xfce.xfce4-whiskermenu-plugin
     xfce.xfce4-pulseaudio-plugin
     matcha-gtk-theme
+    adapta-gtk-theme
+    orchis-theme
     papirus-icon-theme
 
     (kodi.passthru.withPackages (kodiPkgs: [kodiPkgs.pvr-iptvsimple]))
