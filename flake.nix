@@ -41,7 +41,7 @@
         nixosConfigurations."g5070" = mkSystemConfig "g5070"
           ./configuration.nix
           [
-            ./modules/plasma.nix
+            ./modules/xfce.nix
             ./modules/services.nix
             ./modules/hardware-configuration.nix
             ./modules/packages.nix
