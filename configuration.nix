@@ -14,7 +14,7 @@
     options rtl8723be fwlps=0 ant_sel=2
   '';
   
-  hardware.cpu.intel.updateMicrocode = true;
+  hardware.enableRedistributableFirmware = true;
   
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
 
