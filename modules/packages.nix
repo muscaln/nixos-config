@@ -8,23 +8,21 @@
   programs.gnupg.agent.pinentryFlavor = "curses";
 
   environment.systemPackages = with pkgs; [
-    chromium                   arduino
-    firefox                    discord
-    tdesktop                   libreoffice-fresh
-    qpdfview                   system-config-printer
-    vlc                        emacs
-    wget                       curl
-    nmap                       evince
-    pavucontrol                gparted
+    chromium
+    arduino
+    fritzing
+    firefox
+    discord
+    tdesktop
+    libreoffice-fresh
+    qpdfview
+    system-config-printer
+    vlc
+    emacs
+    pavucontrol
+    gparted
     polymc
-    
-    xfce.xfce4-whiskermenu-plugin
-    xfce.xfce4-pulseaudio-plugin
-    matcha-gtk-theme
-    adapta-gtk-theme
-    orchis-theme
-    papirus-icon-theme
-
+   
     (kodi.passthru.withPackages (kodiPkgs: [kodiPkgs.pvr-iptvsimple]))
   ];
 }
