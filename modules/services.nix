@@ -6,14 +6,6 @@
   hardware.bluetooth.package = pkgs.bluezFull;
   services.blueman.enable = true;
   
-  services.xserver.extraConfig = ''
-Section "Device"
-  Identifier "Intel Graphics"
-  Driver "intel"
-  Option "TearFree" "true"
-EndSection
-  '';
- 
   hardware.opengl.enable = true;
   hardware.opengl.extraPackages = with pkgs; [
     intel-media-driver

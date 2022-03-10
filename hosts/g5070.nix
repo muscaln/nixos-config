@@ -30,6 +30,10 @@
     "mitigations=off"
   ];
 
+  services.xserver.deviceSection = ''
+    Option "TearFree" "true"
+  '';
+
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = false;
 }
