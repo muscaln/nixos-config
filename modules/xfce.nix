@@ -3,7 +3,15 @@
 {
   services.xserver.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.lightdm = {
+    enable = true;
+    greeters.gtk = {
+      theme.package = pkgs.matcha-gtk-theme;
+      theme.name = "Matcha-dark-azul";
+      iconTheme.package = pkgs.papirus-icon-theme;
+      iconTheme.name = "Papirus-Dark";
+    };  
+  };
   
   environment.systemPackages = with pkgs; [
     lightlocker
