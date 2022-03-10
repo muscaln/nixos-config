@@ -19,7 +19,7 @@
     tdesktop
     obs-studio
     meld
-    openboard
+    #openboard
     libreoffice-fresh
     qpdfview
     system-config-printer
