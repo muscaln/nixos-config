@@ -6,6 +6,9 @@
   programs.gamemode.enable = true;
   programs.gnupg.agent.enable = true;
   programs.gnupg.agent.pinentryFlavor = "curses";
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   environment.systemPackages = with pkgs; [
     chromium
@@ -14,6 +17,9 @@
     firefox
     discord
     tdesktop
+    obs-studio
+    meld
+    openboard
     libreoffice-fresh
     qpdfview
     system-config-printer
