@@ -20,7 +20,7 @@ let
 
   rebuildSystem = pkgs.writeScriptBin "rebuildSystem" ''
     #!${pkgs.runtimeShell}
-    pushd $HOME/.nixos-config
+    pushd $HOME/.nixos
     echo 'Rebuilding config "${device}" ...'
     sudo ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake .#${device}
   '';
