@@ -34,6 +34,11 @@
     Option "TearFree" "true"
   '';
 
+  environment.etc."wallpaper.png".source = pkgs.fetchurl {
+    url = "https://w.wallhaven.cc/full/6o/wallhaven-6od3px.jpg";
+    sha256 = "sha256-vKbLaPq2o7sh3HrzZwyEn7HoYhusDpDFp7uY2uHibxg=";
+  };
+
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = false;
 }
