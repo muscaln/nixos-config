@@ -6,18 +6,19 @@
 
   outputs = inputs@{ self, home-manager, nixpkgs, ... }:
       let
-        system = "x86_64-linux";
         username = "musfay";
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-          config.packageOverrides = pkgs: {
-            vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+ 
+        mkSystemConfig = device: system: configurationNix: extraModules: homeModules: let
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+            config.packageOverrides = pkgs: {
+              vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+            };
           };
-        };
-        
-        mkSystemConfig = device: configurationNix: extraModules: homeModules: let
+          
           scripts = pkgs.callPackage ./scripts { inherit device self; };
+
           in nixpkgs.lib.nixosSystem {
             inherit system;
             specialArgs = { inherit system inputs pkgs; };
@@ -38,7 +39,7 @@
       in
 
       {
-        nixosConfigurations."g5070" = mkSystemConfig "g5070"
+        nixosConfigurations."g5070" = mkSystemConfig "g5070" "x86_64-linux"
           ./configuration.nix
           [
             ./modules/xfce.nix
