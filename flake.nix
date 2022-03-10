@@ -8,7 +8,7 @@
       let
         username = "musfay";
  
-        mkSystemConfig = device: system: configurationNix: extraModules: homeModules: let
+        mkSystemConfig = device: system: extraModules: homeModules: let
           pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
@@ -23,7 +23,7 @@
             inherit system;
             specialArgs = { inherit system inputs pkgs; };
             modules = [
-              configurationNix
+              (./hosts/. + "/${device}.nix")
 
               home-manager.nixosModules.home-manager
               {
@@ -40,7 +40,6 @@
 
       {
         nixosConfigurations."g5070" = mkSystemConfig "g5070" "x86_64-linux"
-          ./configuration.nix
           [
             ./modules/xfce.nix
             ./modules/services.nix
