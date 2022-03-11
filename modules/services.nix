@@ -41,9 +41,7 @@
       experimental-features = nix-command flakes
     '';
    };                                                                                                                                  
-                                                                                                                                       
   services.udev.packages = [ pkgs.android-udev-rules ];                                                                                
-                                                                                                                                       
   system.stateVersion = "unstable";
 
   # printing
