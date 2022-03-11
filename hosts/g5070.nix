@@ -30,8 +30,13 @@
     "mitigations=off"
   ];
 
-  services.xserver.deviceSection = ''
+  environment.etc."X11/xorg.conf.d/20-intel.conf".text = ''
+Section "Device"
+    Identifier "Intel Graphics"
+    Driver "i915"
+    Option "DRI" "3"
     Option "TearFree" "true"
+EndSection
   '';
 
   networking.networkmanager.enable = true;
