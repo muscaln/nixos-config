@@ -65,6 +65,9 @@
 
     fish = {
       enable = true;
+      shellAliases = {
+        nshell = "LANG=c nix-shell -p"; # Otherwise it tries to export RANLİB=ranlib
+      };
       plugins = [
         {
           name = "plugin-git";
