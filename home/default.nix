@@ -63,10 +63,30 @@
       };
     };
 
+    chromium = {
+      enable = true;
+      commandLineArgs = [
+        "--ignore-gpu-blocklist"
+        "--enable-gpu-rasterization"
+        "--enable-zero-copy"
+        "--enable-features=VaapiVideoDecoder,CanvasOopRasterization,VaapiVideoEncoder"
+        "--use-gl=desktop"
+        "--enable-accelerated-video-decode"
+        "--disable-features=UseChromeOSDirectVideoDecoder"
+        "--enable-accelerated-video-encode"
+        "--disable-gpu-driver-bug-workarounds"
+        "--canvas-oop-rasterization"
+        "--disable-gpu-driver-workarounds"
+        "--enable-gpu-compositing"
+        "--enable-oop-rasterization"
+        "--font-render-hinting=slight"
+      ];
+    };
+
     fish = {
       enable = true;
       shellAliases = {
-        nshell = "LANG=c nix-shell -p"; # Otherwise it tries to export RANLİB=ranlib
+        nix-shell = "LANG=c nix-shell -p"; # Otherwise it tries to export RANLİB=ranlib
       };
       plugins = [
         {
