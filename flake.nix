@@ -9,12 +9,7 @@
         username = "musfay";
  
         mkSystemConfig = device: system: extraModules: homeModules: let
-          patched-pkgs = (import nixpkgs { inherit system; }).applyPatches {
-            name = "patched-nixpkgs";
-            src = nixpkgs;
-            patches = [ ./wireplumber-fix.patch ];
-          };
-          pkgs = import patched-pkgs {
+          pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
             config.packageOverrides = pkgs: {
