@@ -59,6 +59,9 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    config.pipewire-pulse."context.exec" = [
+      { "path" = "${pkgs.pulseaudioFull}/bin/pactl"; "args" = "load-module module-switch-on-connect"; }
+    ];
     media-session.config.bluez-monitor.rules = [
       {
         matches = [ { "device.name" = "~bluez_card.*"; } ];
