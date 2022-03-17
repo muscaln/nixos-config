@@ -9,7 +9,6 @@
     usbutils
     pciutils
     glxinfo
-    any-nix-shell
     (bootiso.overrideAttrs (oldAttrs: rec {
       patches = [ ./bootiso-syslinux.patch ];
     }))
@@ -26,6 +25,11 @@
     cargo
     fishPlugins.pure
   ]; 
+
+  xdg.configFile."MangoHud/MangoHud.conf".text = ''
+    font_size=16
+    position=top-right
+  '';
 
   programs = {
     vscode = {
