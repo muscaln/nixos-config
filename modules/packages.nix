@@ -24,6 +24,7 @@
     qpdfview
     system-config-printer
     vlc
+    mangohud
     emacs
     pavucontrol
     gparted
