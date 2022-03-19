@@ -1,6 +1,12 @@
 { pkgs, lib, ... }:
 
-{
+let
+  nsWrapper = pkgs.writeScriptBin "nix-shell" ''
+    #!${pkgs.runtimeShell}
+    export LANG=c
+    exec -a "$0" "${pkgs.nixUnstable}/bin/nix-shell"  "$@"
+  '';
+in {
   home.packages = with pkgs; [
     android-tools
     gh
@@ -23,6 +29,7 @@
     go
     rustc
     cargo
+    nsWrapper
     fishPlugins.pure
   ]; 
 
@@ -89,9 +96,6 @@
 
     fish = {
       enable = true;
-      shellAliases = {
-        nix-shell = "LANG=c nix-shell -p"; # Otherwise it tries to export RANLİB=ranlib
-      };
       plugins = [
         {
           name = "plugin-git";
