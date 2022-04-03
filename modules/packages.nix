@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, config,... }:
 
 {
   programs.steam.enable = true;
@@ -8,7 +8,8 @@
   programs.gnupg.agent.pinentryFlavor = "curses";
   services.flatpak.enable = true;
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = lib.mkIf
+    config.services.xserver.desktopManager.xfce.enable ([ pkgs.xdg-desktop-portal-gtk ]);
 
   environment.systemPackages = with pkgs; [
     chromium
@@ -29,7 +30,9 @@
     pavucontrol
     gparted
     polymc
-   
-    (kodi.passthru.withPackages (kodiPkgs: [kodiPkgs.pvr-iptvsimple]))
+    
+    matcha-gtk-theme
+    papirus-icon-theme 
+    (kodi.passthru.withPackages (a: [a.pvr-iptvsimple]))
   ];
 }
