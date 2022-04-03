@@ -43,7 +43,6 @@
           [
             ./modules/plasma.nix
             ./modules/services.nix
-            ./modules/hardware-configuration.nix
             ./modules/packages.nix
           ]
           [
