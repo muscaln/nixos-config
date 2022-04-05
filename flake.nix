@@ -8,15 +8,15 @@
       let
         username = "musfay";
  
-        mkSystemConfig = device: system: extraModules: homeModules: let
-          pkgs = import nixpkgs {
+        mkSystemConfig = device: system: extraModules: homeModules: nixpkgsPatches: let
+          nixpkgsArgs = {
             inherit system;
             config.allowUnfree = true;
-            config.packageOverrides = pkgs: {
-              vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-            };
           };
           
+          patchedPkgs = import nixpkgs { inherit system; }.applyPatches nixpkgsArgs;
+          pkgs = if nixpkgsPatches == [] then import nixpkgs nixpkgsArgs else patchedPkgs;
+
           scripts = pkgs.callPackage ./scripts { inherit device self; };
 
           in nixpkgs.lib.nixosSystem {
@@ -38,6 +38,9 @@
           };
       in
 
+      /*
+        mkSystemConfig "HOST" "PLATFORM" [ MODULES ] [ HOME-MANAGER MODULES ] [ NIXPKGS PATCHES ]
+      */
       {
         nixosConfigurations."g5070" = mkSystemConfig "g5070" "x86_64-linux"
           [
@@ -47,6 +50,7 @@
           ]
           [
             ./home/git.nix
-          ];
+          ]
+          [];    
       };
 }
