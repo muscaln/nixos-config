@@ -7,15 +7,15 @@
   outputs = inputs@{ self, home-manager, nixpkgs, ... }:
       let
         username = "musfay";
- 
         mkSystemConfig = device: system: extraModules: homeModules: nixpkgsPatches: let
           nixpkgsArgs = {
             inherit system;
             config.allowUnfree = true;
           };
           
-          patchedPkgs = import nixpkgs { inherit system; }.applyPatches nixpkgsArgs;
-          pkgs = if nixpkgsPatches == [] then import nixpkgs nixpkgsArgs else patchedPkgs;
+          patchedPkgs = (import nixpkgs nixpkgsArgs).applyPatches { name = "nixpkgs-patched"; src = nixpkgs; patches = nixpkgsPatches; };
+          pkgs = if nixpkgsPatches == [] then import nixpkgs nixpkgsArgs
+                                         else import patchedPkgs nixpkgsArgs;
 
           scripts = pkgs.callPackage ./scripts { inherit device self; };
 
@@ -51,6 +51,11 @@
           [
             ./home/git.nix
           ]
-          [];    
+          [
+            (builtins.fetchurl {
+              url = "https://github.com/NixOS/nixpkgs/commit/7f8c513362f84e1763b386f005e6c1f59f3f0679.patch";
+              sha256 = "0cxyx05vq6c0c1ghqa2wkhn0cwji0z187zd3kvb9yr7yafpd1k81";
+            })
+          ];    
       };
 }
