@@ -7,6 +7,7 @@
   programs.gnupg.agent.enable = true;
   programs.gnupg.agent.pinentryFlavor = "curses";
   services.flatpak.enable = true;
+  services.system-config-printer.enable = lib.mkIf config.services.xserver.desktopManager.xfce.enable true;
   xdg.portal.enable = true;
   xdg.portal.extraPortals = lib.mkIf
     config.services.xserver.desktopManager.xfce.enable ([ pkgs.xdg-desktop-portal-gtk ]);
@@ -23,7 +24,6 @@
     #openboard
     libreoffice-fresh
     qpdfview
-    system-config-printer
     vlc
     mangohud
     emacs
@@ -32,6 +32,7 @@
     polymc
     
     matcha-gtk-theme
+    pop-gtk-theme
     papirus-icon-theme 
     (kodi.passthru.withPackages (a: [a.pvr-iptvsimple]))
   ];
