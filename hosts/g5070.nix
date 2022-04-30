@@ -11,7 +11,7 @@
     device = "nodev";
     };
 
-    kernelPackages = pkgs.linuxPackages_xanmod;
+    kernelPackages = pkgs.linuxKernel.kernels.linux_xanmod_latest;
 
     extraModprobeConfig = ''
       options rtl8723be fwlps=0 ant_sel=2
