@@ -39,16 +39,6 @@ in {
   '';
 
   programs = {
-    vscode = {
-      enable = true;
-      package = pkgs.vscodium;
-      extensions = (with pkgs.vscode-extensions; [
-        bbenoist.nix
-        arrterian.nix-env-selector
-        ms-python.python
-      ]);
-    };
-
     neovim = {
       enable = true;
       viAlias = true;
