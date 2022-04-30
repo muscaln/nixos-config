@@ -44,7 +44,7 @@
       {
         nixosConfigurations."g5070" = mkSystemConfig "g5070" "x86_64-linux"
           [
-            ./modules/plasma.nix
+            ./modules/xfce.nix
             ./modules/services.nix
             ./modules/packages.nix
           ]
