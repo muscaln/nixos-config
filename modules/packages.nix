@@ -21,16 +21,16 @@
     tdesktop
     obs-studio
     meld
-    #openboard
+    openboard
     libreoffice-fresh
     qpdfview
     vlc
     mangohud
-    emacs
     pavucontrol
     gparted
     polymc
-    
+    handbrake
+
     matcha-gtk-theme
     pop-gtk-theme
     papirus-icon-theme 
