@@ -20,9 +20,8 @@ let
 
   rebuildSystem = pkgs.writeScriptBin "rebuildSystem" ''
     #!${pkgs.runtimeShell}
-    pushd $HOME/.nixos
     echo 'Rebuilding config "${device}" ...'
-    sudo ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake .#${device}
+    sudo ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake $HOME/.nixos#${device}
   '';
 
 in pkgs.symlinkJoin {
