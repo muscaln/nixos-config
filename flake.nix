@@ -14,8 +14,8 @@
           };
           
           patchedPkgs = nixpkgs.legacyPackages.${system}.applyPatches { name = "nixpkgs-patched"; src = nixpkgs; patches = nixpkgsPatches; };
-          pkgs = if nixpkgsPatches == [] then nixpkgs.legacyPackages.${system}
-                                         else patchedPkgs.legacyPackages.${system};
+          pkgs = if nixpkgsPatches == [] then import nixpkgs nixpkgsArgs
+                                         else import patchedPkgs nixpkgsArgs;
 
           scripts = pkgs.callPackage ./scripts { inherit device self; };
 
