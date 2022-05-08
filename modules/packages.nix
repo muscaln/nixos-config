@@ -16,7 +16,6 @@
     chromium
     arduino
     fritzing
-    firefox
     discord
     tdesktop
     obs-studio

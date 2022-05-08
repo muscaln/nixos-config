@@ -6,16 +6,16 @@
 
   outputs = inputs@{ self, home-manager, nixpkgs, ... }:
       let
-        username = "musfay";
+        username = "muscaln";
         mkSystemConfig = device: system: extraModules: homeModules: nixpkgsPatches: let
           nixpkgsArgs = {
             inherit system;
             config.allowUnfree = true;
           };
           
-          patchedPkgs = (import nixpkgs nixpkgsArgs).applyPatches { name = "nixpkgs-patched"; src = nixpkgs; patches = nixpkgsPatches; };
-          pkgs = if nixpkgsPatches == [] then import nixpkgs nixpkgsArgs
-                                         else import patchedPkgs nixpkgsArgs;
+          patchedPkgs = nixpkgs.legacyPackages.${system}.applyPatches { name = "nixpkgs-patched"; src = nixpkgs; patches = nixpkgsPatches; };
+          pkgs = if nixpkgsPatches == [] then nixpkgs.legacyPackages.${system}
+                                         else patchedPkgs.legacyPackages.${system};
 
           scripts = pkgs.callPackage ./scripts { inherit device self; };
 

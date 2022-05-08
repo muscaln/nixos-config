@@ -30,7 +30,8 @@
     keyMap = "trq";
   };
 
-  users.users.musfay = {
+  users.users.muscaln = {
+    description = "Mustafa Çalışkan";
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "dialout" ];
     initialPassword = "123456";
@@ -41,7 +42,8 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-   };                                                                                                                                  
+  };
+                                                                                                
   services.udev.packages = [ pkgs.android-udev-rules ];                                                                                
   system.stateVersion = "unstable";
 
