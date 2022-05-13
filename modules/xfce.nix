@@ -2,8 +2,8 @@
 
 let
   wallpaper = pkgs.fetchurl {
-    url = "https://w.wallhaven.cc/full/8o/wallhaven-8ok7vk.jpg";
-    sha256 = "sha256-sfMyfE6eo5QiTDJR0ETl7u9x4Gv0PWaiXV48fSrDac0=";
+    url = "https://w.wallhaven.cc/full/x8/wallhaven-x8ye3z.jpg";
+    sha256 = "0b89cgbkadbs1by07jmq0f22sc0vlsdicbil9zi26mvmn5v6dk3r";
   };
 in {
   services.xserver.enable = true;
@@ -11,10 +11,10 @@ in {
   services.xserver.displayManager.lightdm = {
     enable = true;
     greeters.gtk = {
-      theme.package = pkgs.gnome-themes-extra;
+      theme.package = pkgs.matcha-gtk-theme;
       theme.name = "Adwaita-dark";
       iconTheme.package = pkgs.papirus-icon-theme;
-      iconTheme.name = "Papirus-Dark";
+      iconTheme.name = "Matcha-dark-azul";
       extraConfig = ''
         font-name=Open Sans Regular 10
         background=${wallpaper}
@@ -33,4 +33,6 @@ in {
     xfce.xfce4-whiskermenu-plugin
     xfce.xfce4-pulseaudio-plugin
   ];
+
+  environment.variables.QT_QPA_PLATFORMTHEME = "gtk2";
 }

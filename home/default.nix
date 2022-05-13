@@ -57,8 +57,8 @@ in {
       enable = true;
       settings = {
         shell = "${pkgs.fish}/bin/fish";
-        window.opacity = 0.8;
-        font.size = 10.5;
+        window.opacity = 0.95;
+        font.size = 9;
         font.normal.family = "Source Code Pro";
         font.normal.style = "Regular";
       };
