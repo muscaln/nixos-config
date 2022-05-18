@@ -4,8 +4,13 @@
   # bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.package = pkgs.bluezFull;
-  services.blueman.enable = config.services.xserver.desktopManager.xfce.enable;
+  services.blueman.enable = true;
   
+  security.polkit.enable = true;
+  services.upower.enable = true;
+  services.gvfs.enable = true;
+  programs.sway.enable = true;
+
   hardware.opengl.enable = true;
   hardware.opengl.extraPackages = with pkgs; [
     intel-media-driver
@@ -18,6 +23,7 @@
     open-sans
     source-code-pro
     noto-fonts
+    font-awesome
   ];
 
   fonts.fontconfig.localConf = builtins.readFile ./local.conf;
@@ -33,7 +39,7 @@
   users.users.muscaln = {
     description = "Mustafa Çalışkan";
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "dialout" ];
+    extraGroups = [ "networkmanager" "video" "wheel" "dialout" ];
     initialPassword = "123456";
   };
 
@@ -43,17 +49,18 @@
       experimental-features = nix-command flakes
     '';
   };
-                                                                                                
+                                                                
   services.udev.packages = [ pkgs.android-udev-rules ];                                                                                
   system.stateVersion = "unstable";
 
   # printing
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.gutenprint ];
+  services.system-config-printer.enable = true;
 
   # touchpad and wacom
-  services.xserver.libinput.enable = true;
-  services.xserver.wacom.enable = true;
+  #services.xserver.libinput.enable = true;
+  #services.xserver.wacom.enable = true;
 
   # pipewire
   security.rtkit.enable = true;

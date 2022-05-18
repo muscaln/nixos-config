@@ -9,8 +9,8 @@
   services.flatpak.enable = true;
   services.system-config-printer.enable = true;
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = lib.mkIf
-    config.services.xserver.desktopManager.xfce.enable ([ pkgs.xdg-desktop-portal-gtk ]);
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  qt5.platformTheme = "gtk";
 
   environment.systemPackages = with pkgs; [
     chromium
@@ -31,9 +31,16 @@
     polymc
     handbrake
 
+    xfce.thunar
+    xfce.tumbler
+    gtk-engine-murrine
+    gtk_engines
+    gsettings-desktop-schemas
+
     matcha-gtk-theme
     pop-gtk-theme
     papirus-icon-theme 
     (kodi.passthru.withPackages (a: [a.pvr-iptvsimple]))
   ];
+
 }

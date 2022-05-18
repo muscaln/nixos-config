@@ -2,12 +2,13 @@
   description = "System flake";
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   inputs.home-manager.url = "github:nix-community/home-manager";
+  inputs.nix-colors.url = "github:Misterio77/nix-colors";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
   outputs = inputs@{ self, home-manager, nixpkgs, ... }:
       let
         username = "muscaln";
-        mkSystemConfig = device: system: extraModules: homeModules: nixpkgsPatches: let
+        mkSystemConfig = device: system: extraModules: nixpkgsPatches: let
           nixpkgsArgs = {
             inherit system;
             config.allowUnfree = true;
@@ -21,7 +22,7 @@
 
           in nixpkgs.lib.nixosSystem {
             inherit system;
-            specialArgs = { inherit system inputs pkgs; };
+            specialArgs = { inherit system pkgs; inherit (inputs) nix-colors; };
             modules = [
               (./hosts/. + "/${device}.nix")
 
@@ -32,24 +33,20 @@
                 home-manager.users.${username} = {
                   programs.home-manager.enable = true;
                 } // { home.packages = [ scripts ]; }
-                  // { imports = [ ./home ] ++ homeModules; };
+                  // { imports = [ ./home ]; };
               }
             ] ++ extraModules;
           };
       in
 
       /*
-        mkSystemConfig "HOST" "PLATFORM" [ MODULES ] [ HOME-MANAGER MODULES ] [ NIXPKGS PATCHES ]
+        mkSystemConfig "HOST" "PLATFORM" [ MODULES ] [ NIXPKGS PATCHES ]
       */
       {
         nixosConfigurations."g5070" = mkSystemConfig "g5070" "x86_64-linux"
           [
-            ./modules/xfce.nix
             ./modules/services.nix
             ./modules/packages.nix
-          ]
-          [
-            ./home/git.nix
           ]
           [ ];    
       };

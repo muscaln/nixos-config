@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, nix-colors, ... }:
 
 let
   nsWrapper = pkgs.writeScriptBin "nix-shell" ''
@@ -7,13 +7,22 @@ let
     exec -a "$0" "${pkgs.nixUnstable}/bin/nix-shell"  "$@"
   '';
 in {
+  imports = [
+    ./git.nix
+    ./sway.nix
+    ./theme.nix
+  ];
+
   home.packages = with pkgs; [
+    # tools
     android-tools
     gh
     qdl
     libva-utils
     usbutils
     pciutils
+    nsWrapper
+    fishPlugins.pure
     glxinfo
     (bootiso.overrideAttrs (oldAttrs: rec {
       patches = [ ./bootiso-syslinux.patch ];
@@ -23,14 +32,23 @@ in {
     gdb
     screen
     neofetch
+    
+    # development
     python3
     ghc
     nodejs
     go
     rustc
     cargo
-    nsWrapper
-    fishPlugins.pure
+
+    # sway
+    dmenu
+    swaylock-effects
+    wl-clipboard
+    mako
+    swayidle
+    grim
+    slurp
   ]; 
 
   xdg.configFile."MangoHud/MangoHud.conf".text = ''
