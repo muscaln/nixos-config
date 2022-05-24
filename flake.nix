@@ -2,7 +2,6 @@
   description = "System flake";
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   inputs.home-manager.url = "github:nix-community/home-manager";
-  inputs.nix-colors.url = "github:Misterio77/nix-colors";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
   outputs = inputs@{ self, home-manager, nixpkgs, ... }:

@@ -11,6 +11,7 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   qt5.platformTheme = "gtk";
+  environment.sessionVariables."QT_QPA_PLATFORM" = "wayland";
 
   environment.systemPackages = with pkgs; [
     chromium
