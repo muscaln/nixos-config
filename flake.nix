@@ -21,7 +21,7 @@
 
           in nixpkgs.lib.nixosSystem {
             inherit system;
-            specialArgs = { inherit system pkgs; inherit (inputs) nix-colors; };
+            specialArgs = { inherit system pkgs; };
             modules = [
               (./hosts/. + "/${device}.nix")
 
@@ -44,6 +44,10 @@
       {
         nixosConfigurations."g5070" = mkSystemConfig "g5070" "x86_64-linux"
           [
+            ./modules/bluetooth.nix
+            ./modules/pipewire.nix
+            ./modules/sway.nix
+            ./modules/lightdm.nix
             ./modules/services.nix
             ./modules/packages.nix
           ]

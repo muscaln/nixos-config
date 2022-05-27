@@ -1,5 +1,22 @@
 { pkgs, lib, config, modulesPath, ... }:
 
+let
+  xserverArgs = {
+    extraConfig = ''
+      Section "Device"
+        Identifier "Intel Graphics"
+        Driver "intel"
+        Option "TearFree" "true"
+      EndSection
+    '';
+
+    videoDrivers = [
+      "intel"
+      "amdgpu"
+    ];
+  };
+in
+
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
@@ -42,17 +59,14 @@
     ];
   };
 
-  services.xserver.extraConfig = ''
-    Section "Device"
-      Identifier "Intel Graphics"
-      Driver "intel"
-      Option "TearFree" "true"
-    EndSection
-  '';
+  services.xserver = lib.optional (config.services.xserver.enable) xserverArgs;
 
-  services.xserver.videoDrivers = [
-    "intel"
-    "amdgpu"
+  hardware.opengl.enable = true;
+  hardware.opengl.extraPackages = with pkgs; [
+    intel-media-driver
+    vaapiIntel
+    vaapiVdpau
+    libvdpau-va-gl
   ];
 
   hardware.enableRedistributableFirmware = true;
