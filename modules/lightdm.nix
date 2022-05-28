@@ -7,6 +7,8 @@ let
   };
 in {
   services.xserver.displayManager.sessionPackages = lib.optionals (config.programs.sway.enable) [ pkgs.sway ];
+  services.xserver.enable = true;
+  services.xserver.libinput.enable = true; 
   services.xserver.displayManager.lightdm = {
     enable = true;
     greeters.gtk = {
@@ -25,3 +27,4 @@ in {
       '';
     };
   };
+}
