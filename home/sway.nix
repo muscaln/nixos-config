@@ -7,7 +7,6 @@ let
   };
 in
 
-
 {
   wayland.windowManager.sway = {
     enable = true;
@@ -65,7 +64,11 @@ in
         "${modifier}+Shift+9" = "move container to workspace number 9";
 
         "Print" = "exec grim - | wl-copy -t image/png";
-        "Shift+Print" = "exec grim -g ''$(slurp) - | wl-copy -t image/png";
+        "Shift+Print" = "exec grim -g \"$(slurp)\" - | wl-copy -t image/png";
+
+        "XF86AudioMute" = "exec pamixer -t";
+        "XF86AudioRaiseVolume" = "exec pamixer -i 5";
+        "XF86AudioLowerVolume" = "exec pamixer -d 5";
 
         "${modifier}+Shift+c" = "reload";
         "${modifier}+Shift+e" = "exec swaymsg exit";
@@ -85,7 +88,7 @@ in
         outer = 5;
       };
 
-      input = {
+     input = {
         "*" = {
           xkb_layout = "tr";
         };

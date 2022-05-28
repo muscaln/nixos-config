@@ -43,6 +43,7 @@ in {
 
     # sway
     dmenu
+    pamixer
     swaylock-effects
     wl-clipboard
     mako
