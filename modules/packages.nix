@@ -4,14 +4,11 @@
   programs.steam.enable = true;
   programs.fish.enable = true;
   programs.gamemode.enable = true;
-  programs.gnupg.agent.enable = true;
-  programs.gnupg.agent.pinentryFlavor = "curses";
   services.flatpak.enable = true;
   services.system-config-printer.enable = true;
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   qt5.platformTheme = "gtk";
-  environment.sessionVariables."QT_QPA_PLATFORM" = "wayland";
 
   environment.systemPackages = with pkgs; [
     chromium
@@ -32,8 +29,6 @@
     polymc
     handbrake
 
-    xfce.thunar
-    xfce.tumbler
     gtk-engine-murrine
     gtk_engines
     gsettings-desktop-schemas

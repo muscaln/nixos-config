@@ -46,7 +46,7 @@
           [
             ./modules/bluetooth.nix
             ./modules/pipewire.nix
-            ./modules/sway.nix
+            ./modules/xfce.nix
             ./modules/lightdm.nix
             ./modules/services.nix
             ./modules/packages.nix

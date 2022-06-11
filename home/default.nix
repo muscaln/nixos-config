@@ -9,7 +9,7 @@ let
 in {
   imports = [
     ./git.nix
-    ./sway.nix
+    #./sway.nix
     ./theme.nix
   ];
 
