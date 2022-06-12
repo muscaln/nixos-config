@@ -5,11 +5,13 @@
 
   boot = {
     loader.efi.canTouchEfiVariables = true;
-    loader.grub = {
-      enable = true;
-      efiSupport = true;
-      device = "nodev";
-    };
+    loader.systemd-boot.enable = true;
+
+    #loader.grub = {
+    #  enable = true;
+    #  efiSupport = true;
+    #  device = "nodev";
+    #};
 
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
