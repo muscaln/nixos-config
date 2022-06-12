@@ -8,8 +8,6 @@
     font-awesome
   ];
 
-  fonts.fontconfig.localConf = builtins.readFile ./local.conf;
-
   services.xserver.layout = "tr";
   i18n.defaultLocale = "tr_TR.UTF-8";
   time.timeZone = "Europe/Istanbul";
