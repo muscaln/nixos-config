@@ -11,5 +11,5 @@
     xfce.xfce4-pulseaudio-plugin
   ];
 
-  environment.sessionVariables.QT_QPA_PLATFORMTHEME = "gtk2";
+  environment.variables.QT_QPA_PLATFORMTHEME = "gtk2";
 }
