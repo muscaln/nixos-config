@@ -113,9 +113,4 @@ in {
       ];
     };
   };
-
-  qt = {
-    enable = true;
-    platformTheme = "gtk";
-  };
 }

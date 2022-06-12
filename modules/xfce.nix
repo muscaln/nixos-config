@@ -10,4 +10,6 @@
     xfce.xfce4-whiskermenu-plugin
     xfce.xfce4-pulseaudio-plugin
   ];
+
+  environment.sessionVariables.QT_QPA_PLATFORMTHEME = "gtk2";
 }
