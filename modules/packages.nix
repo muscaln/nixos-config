@@ -8,7 +8,6 @@
   services.system-config-printer.enable = true;
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  qt5.platformTheme = "gtk";
 
   environment.systemPackages = with pkgs; [
     chromium
@@ -34,6 +33,7 @@
     gsettings-desktop-schemas
 
     matcha-gtk-theme
+    flat-remix-gtk
     pop-gtk-theme
     papirus-icon-theme 
     (kodi.passthru.withPackages (a: [a.pvr-iptvsimple]))

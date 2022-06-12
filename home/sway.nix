@@ -8,6 +8,17 @@ let
 in
 
 {
+  home.packages = with pkgs; [
+    dmenu
+    pamixer
+    swaylock-effects
+    wl-clipboard
+    mako
+    swayidle
+    grim
+    slurp
+  ];
+
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true ;

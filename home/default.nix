@@ -10,7 +10,7 @@ in {
   imports = [
     ./git.nix
     #./sway.nix
-    ./theme.nix
+    #./theme.nix
   ];
 
   home.packages = with pkgs; [
@@ -40,16 +40,6 @@ in {
     go
     rustc
     cargo
-
-    # sway
-    dmenu
-    pamixer
-    swaylock-effects
-    wl-clipboard
-    mako
-    swayidle
-    grim
-    slurp
   ]; 
 
   xdg.configFile."MangoHud/MangoHud.conf".text = ''
@@ -122,5 +112,10 @@ in {
         }
       ];
     };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
   };
 }
