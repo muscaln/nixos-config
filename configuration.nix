@@ -18,7 +18,7 @@
 
   networking.networkmanager = {
     enable = true;
-    wifi.powersave = 2;
+    wifi.powersave = false;
   };
 
   fonts.fonts = with pkgs; [
