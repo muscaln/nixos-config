@@ -40,6 +40,7 @@ in {
     go
     rustc
     cargo
+    avrdude
   ]; 
 
   xdg.configFile."MangoHud/MangoHud.conf".text = ''
