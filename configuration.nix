@@ -9,7 +9,8 @@
   boot.blacklistedKernelModules = [ "rtw88_8821ce" ];
   
   hardware.cpu.intel.updateMicrocode = true;
-  
+  hardware.enableRedistributableFirmware = true;
+
   boot.kernelParams = [
     "quiet"
     "loglevel=2"
