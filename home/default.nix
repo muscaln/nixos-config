@@ -9,6 +9,7 @@ let
 in {
   imports = [
     ./git.nix
+    ./neovim.nix
     #./sway.nix
     #./theme.nix
   ];
@@ -32,7 +33,8 @@ in {
     gdb
     screen
     neofetch
-    
+    jq
+
     # development
     python3
     ghc
@@ -41,6 +43,7 @@ in {
     rustc
     cargo
     avrdude
+    tinygo
   ]; 
 
   xdg.configFile."MangoHud/MangoHud.conf".text = ''
@@ -49,20 +52,6 @@ in {
   '';
 
   programs = {
-    neovim = {
-      enable = true;
-      viAlias = true;
-      vimAlias = true;
-      plugins = with pkgs.vimPlugins; [
-        rainbow
-        vim-nix
-        nerdtree
-        lightline-vim
-        vim-surround
-        editorconfig-nvim
-      ];
-    };
-
     direnv = {
       enable = true;
       nix-direnv.enable = true;
