@@ -4,10 +4,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
   
-  boot.kernelPackages = linuxKernel.packages.linux_xanmod;
-  boot.extraModulePackages = [ config.boot.kernelPackages.rtl8821ce ];
-  boot.blacklistedKernelModules = [ "rtw88_8821ce" ];
-  
+  boot.kernelPackages = linuxKernel.packages.linux_xanmod_latest;
+
   hardware.cpu.intel.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
 
@@ -18,7 +16,10 @@
     "i915.force_probe=4e55"
   ];
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    wifi.powersave = 2;
+  };
 
   fonts.fonts = with pkgs; [
     open-sans
