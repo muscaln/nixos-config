@@ -9,7 +9,7 @@
     evince                     system-config-printer
     vlc                        chromium
     wget                       curl
-    arduino
+    arduino                    wine-staging
 
     matcha-gtk-theme
     papirus-icon-theme

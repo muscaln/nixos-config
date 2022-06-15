@@ -4,7 +4,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
   
-  boot.kernelPackages = pkgs.linuxPackages_xanmod;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   boot.extraModulePackages = [ config.boot.kernelPackages.rtl8821ce ];
   boot.blacklistedKernelModules = [ "rtw88_8821ce" ];
   
@@ -33,7 +33,6 @@
     keyMap = "trq";
   };
 
-
   users.users.milhan = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "dialout" ];
@@ -50,4 +49,18 @@
   services.udev.packages = [ pkgs.android-udev-rules ];
 
   system.stateVersion = "unstable";
+
+  fileSystems = {
+    "/" = { 
+      device = "/dev/disk/by-label/nixos";
+      fsType = "ext4";
+      options = [ "noatime" "nodiratime" "discard" ];
+    };
+    "/boot" = {
+      device = "/dev/disk/by-label/EFI";
+      fsType = "vfat";
+    };
+  };
+
+  swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
 }
