@@ -1,6 +1,11 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, modulesPath, ... }:
 
 {
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci" ];
+  boot.kernelModules = [ "kvm-intel" ];
+
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
   
