@@ -4,7 +4,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
   
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = linuxKernel.packages.linux_xanmod;
   boot.extraModulePackages = [ config.boot.kernelPackages.rtl8821ce ];
   boot.blacklistedKernelModules = [ "rtw88_8821ce" ];
   
